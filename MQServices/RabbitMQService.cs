@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication
 {
-    class RabbitMQService
+    public class RabbitMqService
     {
-        public void BasicRabbitReceiver()
+        public void BasicReceiver()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
@@ -39,7 +39,7 @@ namespace ConsoleApplication
             }
         }
 
-        public void BasicRabbitSender()
+        public void BasicSender()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())

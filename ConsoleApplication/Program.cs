@@ -1,10 +1,5 @@
-﻿using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApplication
 {
@@ -12,7 +7,16 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            new RabbitMQService().BasicRabbitSender();
+            Process.Start(@"C:\RabbitMQ\rabbitmq_server-3.6.1\sbin\rabbitmq-plugins.bat", "enable rabbitmq_management");
+            Console.WriteLine("Wait for plugin process to finish and then press any key");
+            Console.ReadKey();
+            Process.Start(@"C:\RabbitMQ\rabbitmq_server-3.6.1\sbin\rabbitmq-server.bat");
+            Console.WriteLine("Wait for broker to start and then press any key");
+            Console.ReadKey();
+
+            Process.Start("ReceiverConsole.exe");
+
+            Process.Start("SenderConsole.exe");
         }        
     }
 }
